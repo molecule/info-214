@@ -24,7 +24,7 @@ $(function() {
     }
 
     x.domain(data.map(function(d) { return d.tool; }));
-    y.domain([0, d3.max(data, function(d) { return d.ratingEase; })]);
+    y.domain([0, 5]);
 
     g.append("g")
       .attr("class", "axis axis--x")
@@ -44,7 +44,7 @@ $(function() {
       .attr("y", 6)
       .attr("dy", "0.71em")
       .attr("text-anchor", "end")
-      .text("Frequency");
+      .text("Rating");
 
   g.selectAll(".bar")
     .data(data)
