@@ -65,36 +65,5 @@ $(function() {
       .delay(function(d, i) {return i * 100})
       .attr('height', function(d) { return height - y(d.percentageUsed)})
       .attr("fill", function(d, i) { return color(i); })
-      
-      
-
-      /*
-    // Now let's bind that data to our SVG.
-    chart.selectAll('rect')
-      .data(data)
-      .enter()
-      .append('rect')
-      // Let's add in the following attributes:
-        // The y position of each rectangle will be based on the value's index position,
-        // with a space of 2 between each rectangle (for a total difference of 22)
-        // Each rectangle will have a height of 20.
-        // The rectangles will have an x position of 0.
-        // At the beginning, the rectangles will have a width of 0 so that they will "grow in" through animation.
-        // but for now, set their width to xScale(parseFloat(d.population)) so that you can see the chart.
-      .attr('width', 20)
-      .attr('y', 0)
-      .attr('height', 0)
-      .attr('x', function(d,i) {return 22*i})
-      .transition()
-        // Here we will configure the attributes for our transition animation:
-          // The delay will be based on each value's index position, staggered by a multiple of 100 of the index to create a "one-by-one" effect.
-            // https://github.com/d3/d3-transition/blob/master/README.md#timing
-          // The duration will be constant and set at 200ms.
-          // The width for each rectangle will be set to the final value: xScale(parseFloat(d.population))
-          // The value is loaded as a String from the csv, so we convert it with parseFloat()
-      .duration(200)
-      .delay(function(d, i) {return i * 100})
-      .attr('height', function(d) {return xScale(parseFloat(d.percentageUsed))});
-      */
   });
 });
