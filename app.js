@@ -30,7 +30,7 @@ $(function() {
       .attr("class", "axis axis--x")
       .attr("transform", "translate(0," + height + ")")
       .call(d3.axisBottom(x))
-      .selectAll("text")
+      .selectAll("text") // rotate x-axis labels by 90 deg source: https://bl.ocks.org/mbostock/4403522
         .attr("y", 0)
         .attr("x", 9)
         .attr("dy", ".35em")
