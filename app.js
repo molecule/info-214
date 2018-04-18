@@ -6,7 +6,9 @@ $(function() {
     height = +svg.attr("height") - margin.top - margin.bottom;
 
     var x = d3.scaleBand().rangeRound([0, width]).padding(0.1),
-    y = d3.scaleLinear().rangeRound([height, 0]);
+        y = d3.scaleLinear().rangeRound([height, 0]),
+        color = d3.scaleOrdinal()
+        .range(["#5DDEC9", "#EF64AD", "#7b6888", "#BA67E5", "#E0E23B", "#d0743c", "#ff8c00"]);
 
     var g = svg.append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
@@ -55,7 +57,8 @@ $(function() {
       // The value is loaded as a String from the csv, so we convert it with parseFloat()
       .duration(200)
       .delay(function(d, i) {return i * 100})
-      .attr('height', function(d) { return height - y(d.percentageUsed)});
+      .attr('height', function(d) { return height - y(d.percentageUsed)})
+      .attr("fill", function(d, i) { return color(i); })
       
 
       /*
