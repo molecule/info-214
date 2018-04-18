@@ -17,6 +17,11 @@ $(function() {
   // Instead of loading in data from within the doc, such as...
     // var data = [ 1, 2, 3, 4, 5, 4, 3, 4, 3, 2, 1 ];
   // ...let's try loading in the data from the included CSV using d3.csv
+  var loc = window.location.pathname;
+  var dir = loc.substring(0, loc.lastIndexOf('/'));
+  console.log("loc: " + loc);
+  console.log("dir: " + dir);
+
   d3.csv("data-test.csv", function(error, data) {
     if(error) {
       console.log('csv error: ', error);
