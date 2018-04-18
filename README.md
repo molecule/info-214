@@ -6,3 +6,4 @@ For python 2: python -m SimpleHTTPServer
 
 Then open this link: http://localhost:8000/index.html
 
+Updated code to be a bart chart from Waternova: https://github.com/waternova/D3_Lab_Exercise
