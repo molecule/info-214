@@ -1,7 +1,7 @@
 'use strict';
 $(function() {
   var svg = d3.select("svg"),
-    margin = {top: 20, right: 20, bottom: 80, left: 40},
+    margin = {top: 20, right: 20, bottom: 120, left: 40},
     width = +svg.attr("width") - margin.left - margin.right,
     height = +svg.attr("height") - margin.top - margin.bottom;
 
@@ -17,7 +17,7 @@ $(function() {
   // Instead of loading in data from within the doc, such as...
     // var data = [ 1, 2, 3, 4, 5, 4, 3, 4, 3, 2, 1 ];
   // ...let's try loading in the data from the included CSV using d3.csv
-  d3.csv("D3Sample.csv", function(error, data) {
+  d3.csv("data-test.csv", function(error, data) {
     if(error) {
       console.log('csv error: ', error);
       return;

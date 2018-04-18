@@ -1,7 +1,7 @@
-tool,percentageUsed,
-classes,0.70,
-MYP,0.20
-paper,0.63
-Berkeleytime,0.60
-SchedulePlanner,0.66
-Spreadsheet,0.40
+tool,percentageUsed,ratingEase
+classes.berkeley.edu,0.70,2.8
+Multi-Year Planner,0.20,1
+Paper,0.63,3.1
+Berkeleytime,0.60,2.7
+SchedulePlanner,0.66,2.5
+Spreadsheet,0.40,3
