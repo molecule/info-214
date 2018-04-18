@@ -29,7 +29,13 @@ $(function() {
     g.append("g")
       .attr("class", "axis axis--x")
       .attr("transform", "translate(0," + height + ")")
-      .call(d3.axisBottom(x));
+      .call(d3.axisBottom(x))
+      .selectAll("text")
+        .attr("y", 0)
+        .attr("x", 9)
+        .attr("dy", ".35em")
+        .attr("transform", "rotate(90)")
+        .style("text-anchor", "start");
 
   g.append("g")
       .attr("class", "axis axis--y")
@@ -60,6 +66,7 @@ $(function() {
       .delay(function(d, i) {return i * 100})
       .attr('height', function(d) { return height - y(d.percentageUsed)})
       .attr("fill", function(d, i) { return color(i); })
+      
       
 
       /*
