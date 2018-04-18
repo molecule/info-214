@@ -43,9 +43,9 @@ $(function() {
     .enter().append("rect")
       .attr("class", "bar")
       .attr("x", function(d) { return x(d.tool); })
-      .attr("y", 0 ) // set to zero at first so I can animate them appearing.
+      .attr("y", function(d) { return y(d.percentageUsed); })
       .attr("width", x.bandwidth())
-      .attr("height", 0) // set to zero at first so I can animate 
+      .attr("height", 0)
       .transition()
       // Here we will configure the attributes for our transition animation:
       // The delay will be based on each value's index position, staggered by a multiple of 100 of the index to create a "one-by-one" effect.
@@ -55,10 +55,8 @@ $(function() {
       // The value is loaded as a String from the csv, so we convert it with parseFloat()
       .duration(200)
       .delay(function(d, i) {return i * 100})
-      .attr('height', function(d) {return height - y(parseFloat(d.percentageUsed))});
-    
-
-      // .attr("y", function(d) { return y(d.percentageUsed); })
+      .attr('height', function(d) { return height - y(d.percentageUsed)});
+      
 
       /*
     // Now let's bind that data to our SVG.
