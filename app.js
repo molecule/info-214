@@ -48,6 +48,6 @@ $(function() {
           // The value is loaded as a String from the csv, so we convert it with parseFloat()
       .duration(200)
       .delay(function(d, i) {return i * 100})
-      .attr('width', function(d) {return xScale(parseFloat(d.population))});
+      .attr('width', function(d) {return xScale(parseFloat(d.percentageUsed))});
   });
 });
