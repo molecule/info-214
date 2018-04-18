@@ -1,7 +1,7 @@
 'use strict';
 
 $(function(){
-  console.log("helloooooo");
+  console.log("setting up chart area");
   // Setting up the chart area
   var margin = {
     top: 40,
