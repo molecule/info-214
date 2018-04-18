@@ -51,7 +51,7 @@ $(function() {
     .enter().append("rect")
       .attr("class", "bar")
       .attr("x", function(d) { return x(d.tool); })
-      .attr("y", function(d) { return y(d.ratingEase); })
+      .attr("y", 0) // may need to start at bottom (height - this val)
       .attr("width", x.bandwidth())
       .attr("height", 0)
       .transition()
@@ -63,7 +63,8 @@ $(function() {
       // The value is loaded as a String from the csv, so we convert it with parseFloat()
       .duration(200)
       .delay(function(d, i) {return i * 100})
-      .attr('height', function(d) { return height - y(d.ratingEase)})
+      .attr('height', function(d) { return height - y(d.ratingEase)}) // maybe make height negative
+      .attr('y', function(d) { return y(d.ratingEase)})
       .attr("fill", function(d, i) { return color(i); })
   });
 });
