@@ -9,6 +9,7 @@ $(function() {
         y = d3.scaleLinear().rangeRound([height, 0]),
         color = d3.scaleOrdinal()
         .range(["#5DDEC9", "#EF64AD", "#7b6888", "#BA67E5", "#E0E23B", "#d0743c", "#ff8c00"]);
+        // color based on this: https://bl.ocks.org/shimizu/a4c0c940b19d42cf8ebca29e20573aca
 
     var g = svg.append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
