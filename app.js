@@ -8,7 +8,7 @@ $(function() {
       // The last bar will not have the space of 2.
       // 10*22 + 20 = 240
     // It is translated 40 pixels down to leave room for axis labels
-  var chart = d3.select('#barchart').attr('transform', 'translate(0,40)')
+  var chart = d3.select('#columnchart').attr('transform', 'translate(0,40)')
   
   // Set up a xScale (scaleLinear) with a domain from 0 to 100 and a range from 0 to 200
     // CODE HERE
