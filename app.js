@@ -1,19 +1,15 @@
 'use strict';
 $(function() {
-  // Declare your chart variable and connect it to the #barchart in your HTML
-  // Give it a width of 200 and a height of 240
-    // Why is the height 240? 
-      // In our sample CSV, we have 11 values.
-      // Later on, we'll set each bar to have a height of 20 with a space of 2.
-      // The last bar will not have the space of 2.
-      // 10*22 + 20 = 240
-    // It is translated 40 pixels down to leave room for axis labels
-  var chart = d3.select('#columnchart').attr('transform', 'translate(0,40)')
-  
-  // Set up a xScale (scaleLinear) with a domain from 0 to 100 and a range from 0 to 200
-    // CODE HERE
-  var xScale = d3.scaleLinear().domain([0, 100]).range([0, 200]);
-  chart.append('g').attr('class', 'x axis').call(d3.axisTop(xScale));
+  var svg = d3.select("svg"),
+    margin = {top: 20, right: 20, bottom: 30, left: 40},
+    width = +svg.attr("width") - margin.left - margin.right,
+    height = +svg.attr("height") - margin.top - margin.bottom;
+
+    var x = d3.scaleBand().rangeRound([0, width]).padding(0.1),
+    y = d3.scaleLinear().rangeRound([height, 0]);
+
+    var g = svg.append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
   // Instead of loading in data from within the doc, such as...
     // var data = [ 1, 2, 3, 4, 5, 4, 3, 4, 3, 2, 1 ];
@@ -23,6 +19,35 @@ $(function() {
       console.log('csv error: ', error);
       return;
     }
+
+    x.domain(data.map(function(d) { return d.tool; }));
+    y.domain([0, d3.max(data, function(d) { return d.percentageUsed; })]);
+
+    g.append("g")
+      .attr("class", "axis axis--x")
+      .attr("transform", "translate(0," + height + ")")
+      .call(d3.axisBottom(x));
+
+  g.append("g")
+      .attr("class", "axis axis--y")
+      .call(d3.axisLeft(y).ticks(10, "%"))
+    .append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 6)
+      .attr("dy", "0.71em")
+      .attr("text-anchor", "end")
+      .text("Frequency");
+
+  g.selectAll(".bar")
+    .data(data)
+    .enter().append("rect")
+      .attr("class", "bar")
+      .attr("x", function(d) { return x(d.tool); })
+      .attr("y", function(d) { return y(d.percentageUsed); })
+      .attr("width", x.bandwidth())
+      .attr("height", function(d) { return height - y(d.percentageUsed); });
+
+      /*
     // Now let's bind that data to our SVG.
     chart.selectAll('rect')
       .data(data)
@@ -49,5 +74,6 @@ $(function() {
       .duration(200)
       .delay(function(d, i) {return i * 100})
       .attr('height', function(d) {return xScale(parseFloat(d.percentageUsed))});
+      */
   });
 });
