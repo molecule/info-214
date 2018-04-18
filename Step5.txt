@@ -1,2 +1,0 @@
-Step 5: Add some styling
-Add a legend, a title, change the axes, or some other modification
